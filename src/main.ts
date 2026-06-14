@@ -35,6 +35,21 @@ import { buildTunConfig } from "./tun";
 import { buildBaseLists } from "./selectors";
 import type { ClashConfig, ScriptArgs } from "./types";
 
+/**
+ * 运行环境安全守卫：部分宿主（如 Clash Verge 的 boa_engine）不提供 `console`
+ * 与 `$arguments`，访问会抛 ReferenceError。这里统一做兜底，避免在 catch
+ * 块里二次抛错导致整个脚本失败。
+ */
+if (typeof console === "undefined") {
+    (globalThis as Record<string, unknown>).console = {
+        log() {},
+        warn() {},
+        error() {},
+        info() {},
+        debug() {},
+    };
+}
+
 const geoxURL = {
     geoip: `${CDN_URL}/gh/MetaCubeX/meta-rules-dat@release/geoip.dat`,
     geosite: `${CDN_URL}/gh/MetaCubeX/meta-rules-dat@release/geosite.dat`,
@@ -48,7 +63,7 @@ function getRawArgs(): ScriptArgs {
     try {
         return $arguments;
     } catch {
-        console.log("[override-rules 覆写脚本] 未检测到传入参数，使用默认参数。", {});
+        console.log("[override-rules] 未检测到传入参数，使用默认参数。");
         return {};
     }
 }
