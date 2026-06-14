@@ -20,12 +20,13 @@ export function buildBaseLists({
     regexFilter,
 }: BuildBaseListsInput): BaseLists {
     const lowCost = lowCostNodes.length > 0 || regexFilter;
+    const countryAndOtherGroups = buildList(countryGroupNames, PROXY_GROUPS.OTHER);
 
     const defaultSelector = buildList(
         PROXY_GROUPS.AUTO,
         PROXY_GROUPS.FALLBACK,
         landing && PROXY_GROUPS.LANDING,
-        countryGroupNames,
+        countryAndOtherGroups,
         lowCost && PROXY_GROUPS.LOW_COST,
         PROXY_GROUPS.MANUAL,
         "DIRECT"
@@ -34,7 +35,7 @@ export function buildBaseLists({
     const defaultProxies = buildList(
         PROXY_GROUPS.SELECT,
         landing && PROXY_GROUPS.LANDING,
-        countryGroupNames,
+        countryAndOtherGroups,
         lowCost && PROXY_GROUPS.LOW_COST,
         PROXY_GROUPS.MANUAL,
         "DIRECT"
@@ -43,16 +44,16 @@ export function buildBaseLists({
     const defaultProxiesDirect = buildList(
         "DIRECT",
         landing && PROXY_GROUPS.LANDING,
-        countryGroupNames,
+        countryAndOtherGroups,
         lowCost && PROXY_GROUPS.LOW_COST,
         PROXY_GROUPS.SELECT,
         PROXY_GROUPS.MANUAL
     );
 
-    const defaultFallback = buildList(landing && PROXY_GROUPS.LANDING, countryGroupNames);
+    const defaultFallback = buildList(landing && PROXY_GROUPS.LANDING, countryAndOtherGroups);
 
     const frontProxySelector = buildList(
-        countryGroupNames,
+        countryAndOtherGroups,
         "DIRECT",
         !regexFilter && nonLandingNodes
     );

@@ -146,7 +146,7 @@ export const countriesMeta: Record<string, CountryMeta> = {
     越南: {
         pattern:
             "越南|越|\\b(?:VN|vn)(?:[-_ ]?\\d+(?:[-_ ]?[A-Za-z]{2,})?)?\\b|Vietnam|Viet Nam|河内|胡志明|🇻🇳",
-        icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/World.png`,
+        icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Global.png`,
     },
     印度: {
         pattern: "印度|\\b(?:IN|in)(?:[-_ ]?\\d+(?:[-_ ]?[A-Za-z]{2,})?)?\\b|India|🇮🇳",

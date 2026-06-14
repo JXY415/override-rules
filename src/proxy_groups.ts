@@ -388,14 +388,14 @@ export function buildProxyGroups({
                       : { "include-all": true as const, filter: LOW_COST_NODE_MATCHER.pattern },
               })
             : null,
+        ...countryProxyGroups,
         {
             name: PROXY_GROUPS.OTHER,
-            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/World.png`,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Global.png`,
             type: "select",
             "include-all": true,
             "exclude-filter": OTHER_COUNTRIES_EXCLUDE_FILTER,
         },
-        ...countryProxyGroups,
     ];
 
     return groups.filter(isNotNull);

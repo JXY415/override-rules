@@ -139,7 +139,7 @@ https://cdn.jsdelivr.net/gh/JXY415/override-rules/yamls/config_gt-0_landing-0_ip
 https://cdn.jsdelivr.net/gh/JXY415/override-rules@v0.1.0/yamls/config_gt-0_landing-0_ipv6-0_full-1_keepalive-0_fakeip-0_quic-0_tun-0.yaml
 ```
 
-*注：CI 仅套用了一份虚拟的 `fake_proxies.json` 来模拟生成 YAML，因此它无法像 JS 动态脚本那样根据你的实际节点智能生成专属分组策略，只能保守地包含常用的国家/地区。为了最高效的分流体验，仍强烈推荐使用 JS 覆写。*
+*注：CI 生成 YAML 时会使用虚拟节点覆盖 `countriesMeta` 中已支持的国家/地区，因此静态 YAML 会固定包含这些地区分组；但它仍无法像 JS 动态脚本那样按你的实际节点名称临时识别新增地区或异常命名。为了最高效的分流体验，仍强烈推荐使用 JS 覆写。*
 
 ### 如何自定义与贡献
 

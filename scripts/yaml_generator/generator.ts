@@ -24,7 +24,8 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import YAML from "yaml";
 
-import type { ClashConfig } from "../../src/types";
+import { countriesMeta } from "../../src/constants";
+import type { ClashConfig, ProxyNode } from "../../src/types";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -72,7 +73,17 @@ function loadFakeConfig(): ClashConfig {
     if (!json.proxies || !Array.isArray(json.proxies)) {
         throw new Error("fake_proxies.json 缺少 proxies 数组");
     }
-    return json;
+    return { ...json, proxies: addCountryCoverageProxies(json.proxies) };
+}
+
+function addCountryCoverageProxies(proxies: ProxyNode[]): ProxyNode[] {
+    const seen = new Set(proxies.map((proxy) => proxy.name));
+    const coverageProxies = Object.keys(countriesMeta)
+        .map((country) => `${country}01`)
+        .filter((name) => !seen.has(name))
+        .map((name) => ({ name }));
+
+    return [...proxies, ...coverageProxies];
 }
 
 function toYAML(obj: ClashConfig): string {
