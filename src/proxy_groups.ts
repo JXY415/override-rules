@@ -15,7 +15,7 @@ import type {
     GroupType,
     ProxyGroup,
 } from "./types";
-import { isNotNull } from "./utils";
+import { buildList, isNotNull } from "./utils";
 
 interface BuildGroupByTypeInput {
     name: string;
@@ -169,9 +169,21 @@ export function buildProxyGroups({
         },
         {
             name: PROXY_GROUPS.AI_SERVICE,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/AI.png`,
+            type: "select",
+            proxies: buildList(PROXY_GROUPS.RESIDENTIAL, defaultProxies),
+        },
+        {
+            name: PROXY_GROUPS.OPENAI,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png`,
             type: "select",
-            proxies: defaultProxies,
+            proxies: buildList(PROXY_GROUPS.RESIDENTIAL, defaultProxies),
+        },
+        {
+            name: PROXY_GROUPS.CLAUDE,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png`,
+            type: "select",
+            proxies: buildList(PROXY_GROUPS.RESIDENTIAL, defaultProxies),
         },
         {
             name: PROXY_GROUPS.CRYPTO,
@@ -266,13 +278,6 @@ export function buildProxyGroups({
             proxies: defaultProxies,
         },
         {
-            name: PROXY_GROUPS.WEIBO,
-            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Weibo.png`,
-            type: "select",
-            "include-all": true,
-            proxies: defaultProxiesDirect,
-        },
-        {
             name: PROXY_GROUPS.TRUTH_SOCIAL,
             icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Truth_Social.png`,
             type: "select",
@@ -281,22 +286,10 @@ export function buildProxyGroups({
                 : defaultProxies,
         },
         {
-            name: PROXY_GROUPS.EHENTAI,
-            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Ehentai.png`,
-            type: "select",
-            proxies: defaultProxies,
-        },
-        {
             name: PROXY_GROUPS.PIKPAK,
             icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/PikPak.png`,
             type: "select",
             proxies: defaultProxies,
-        },
-        {
-            name: PROXY_GROUPS.SOGOU_INPUT,
-            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Sougou.png`,
-            type: "select",
-            proxies: ["DIRECT", "REJECT"],
         },
         {
             name: PROXY_GROUPS.SSH,
@@ -333,6 +326,13 @@ export function buildProxyGroups({
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png`,
             type: "select",
             proxies: ["REJECT", "REJECT-DROP", "DIRECT"],
+        },
+        {
+            name: PROXY_GROUPS.RESIDENTIAL,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Airport.png`,
+            type: "select",
+            "include-all": true,
+            filter: LANDING_NODE_MATCHER.pattern,
         },
         lowCostNodes.length > 0 || regexFilter
             ? buildGroupByType({
