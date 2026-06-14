@@ -54,7 +54,7 @@ export const PROXY_GROUPS = {
 } as const;
 
 export const LOW_COST_NODE_MATCHER = createCaseInsensitiveNodeMatcher(
-    String.raw`0\.[0-5]|低倍率|省流|实验性`
+    String.raw`0\.[0-9]|低倍率|省流|实验性`
 );
 
 export const LANDING_NODE_MATCHER = createCaseInsensitiveNodeMatcher(
