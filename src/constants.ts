@@ -2,7 +2,7 @@ import type { CountryMeta } from "./types";
 import { createCaseInsensitiveNodeMatcher } from "./utils";
 
 export const NODE_SUFFIX = "节点";
-export const CDN_URL = "https://cdn.jsdelivr.net";
+export const CDN_URL = "https://gcore.jsdelivr.net";
 /**
  * 本仓库在 GitHub 上的标识（owner/repo），用于拼装规则集与图标的 jsDelivr CDN 链接。
  * Fork 后请改为自己的仓库标识，使产物引用本仓库的 `ruleset/` 与 `icons/` 资源。

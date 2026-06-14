@@ -103,7 +103,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "domain",
         format: "yaml",
         interval: 86400,
-        url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt",
+        url: "https://gcore.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt",
         path: "./ruleset/GFWList.yaml",
     },
 };
