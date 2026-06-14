@@ -5,6 +5,10 @@
   "description": "Override rules YAML generator",
   "license": "MIT",
   "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JXY415/override-rules.git"
+  },
   "scripts": {
     "typecheck": "tsgo --noEmit",
     "build": "npm run typecheck && node scripts/build.mjs",
