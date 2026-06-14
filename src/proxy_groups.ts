@@ -172,26 +172,31 @@ export function buildProxyGroups({
             name: PROXY_GROUPS.OPENAI,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png`,
             type: "select",
-            proxies: buildList(PROXY_GROUPS.RESIDENTIAL, defaultProxies),
+            proxies: buildList(
+                PROXY_GROUPS.SELECT,
+                PROXY_GROUPS.RESIDENTIAL,
+                ...defaultProxies.slice(1)
+            ),
         },
         {
             name: PROXY_GROUPS.CLAUDE,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png`,
             type: "select",
-            proxies: buildList(PROXY_GROUPS.RESIDENTIAL, defaultProxies),
+            proxies: buildList(
+                PROXY_GROUPS.SELECT,
+                PROXY_GROUPS.RESIDENTIAL,
+                ...defaultProxies.slice(1)
+            ),
         },
         {
             name: PROXY_GROUPS.AI_SERVICE,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/AI.png`,
             type: "select",
-            proxies: buildList(PROXY_GROUPS.RESIDENTIAL, defaultProxies),
-        },
-        {
-            name: PROXY_GROUPS.RESIDENTIAL,
-            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Airport.png`,
-            type: "select",
-            "include-all": true,
-            filter: LANDING_NODE_MATCHER.pattern,
+            proxies: buildList(
+                PROXY_GROUPS.SELECT,
+                PROXY_GROUPS.RESIDENTIAL,
+                ...defaultProxies.slice(1)
+            ),
         },
 
         // ========================================
@@ -365,6 +370,13 @@ export function buildProxyGroups({
         // ========================================
         // ⚙️ 节点池
         // ========================================
+        {
+            name: PROXY_GROUPS.RESIDENTIAL,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Airport.png`,
+            type: "select",
+            "include-all": true,
+            filter: LANDING_NODE_MATCHER.pattern,
+        },
         lowCostNodes.length > 0 || regexFilter
             ? buildGroupByType({
                   name: PROXY_GROUPS.LOW_COST,
