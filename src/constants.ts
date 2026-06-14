@@ -27,6 +27,7 @@ export const PROXY_GROUPS = {
     OPENAI: "OpenAI",
     CLAUDE: "Claude",
     RESIDENTIAL: "家宽节点",
+    OTHER: "其他国家",
     CRYPTO: "加密货币",
     APPLE: "苹果服务",
     GOOGLE: "谷歌服务",
@@ -45,7 +46,7 @@ export const PROXY_GROUPS = {
     TWITTER: "Twitter",
     TWITCH: "Twitch",
     WEIBO: "新浪微博",
-    PIKPAK: "PikPak网盘",
+    PIKPAK: "PikPak",
     SSH: "SSH",
     SOGOU_INPUT: "搜狗输入法",
     AD_BLOCK: "广告拦截",
@@ -142,6 +143,11 @@ export const countriesMeta: Record<string, CountryMeta> = {
         pattern: "泰国|泰|\\b(?:TH|th)(?:[-_ ]?\\d+(?:[-_ ]?[A-Za-z]{2,})?)?\\b|Thailand|🇹🇭",
         icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Thailand.png`,
     },
+    越南: {
+        pattern:
+            "越南|越|\\b(?:VN|vn)(?:[-_ ]?\\d+(?:[-_ ]?[A-Za-z]{2,})?)?\\b|Vietnam|Viet Nam|河内|胡志明|🇻🇳",
+        icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/World.png`,
+    },
     印度: {
         pattern: "印度|\\b(?:IN|in)(?:[-_ ]?\\d+(?:[-_ ]?[A-Za-z]{2,})?)?\\b|India|🇮🇳",
         icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/India.png`,
@@ -179,3 +185,11 @@ export const countriesMeta: Record<string, CountryMeta> = {
         icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Ukraine.png`,
     },
 };
+
+/**
+ * 「其他国家」兜底组使用的 exclude-filter：把 countriesMeta 里所有地区的 pattern
+ * 合并为一个大的正则，使「其他国家」只收纳未匹配任何已配地区的节点。
+ */
+export const OTHER_COUNTRIES_EXCLUDE_FILTER = `(?i)${Object.values(countriesMeta)
+    .map((m) => m.pattern)
+    .join("|")}`;

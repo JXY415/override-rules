@@ -5,6 +5,7 @@ import {
     LANDING_NODE_MATCHER,
     LOW_COST_NODE_MATCHER,
     NODE_SUFFIX,
+    OTHER_COUNTRIES_EXCLUDE_FILTER,
     PROXY_GROUPS,
     countriesMeta,
 } from "./constants";
@@ -387,6 +388,13 @@ export function buildProxyGroups({
                       : { "include-all": true as const, filter: LOW_COST_NODE_MATCHER.pattern },
               })
             : null,
+        {
+            name: PROXY_GROUPS.OTHER,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/World.png`,
+            type: "select",
+            "include-all": true,
+            "exclude-filter": OTHER_COUNTRIES_EXCLUDE_FILTER,
+        },
         ...countryProxyGroups,
     ];
 
