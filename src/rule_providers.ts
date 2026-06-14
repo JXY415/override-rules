@@ -1,4 +1,4 @@
-import { CDN_URL } from "./constants";
+import { CDN_URL, REPO_REF, REPO_SLUG } from "./constants";
 import type { RuleProvider } from "./types";
 
 export const ruleProviders: Record<string, RuleProvider> = {
@@ -39,7 +39,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/TikTok.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/TikTok.list`,
         path: "./ruleset/TikTok.list",
     },
     EHentai: {
@@ -47,7 +47,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/EHentai.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/EHentai.list`,
         path: "./ruleset/EHentai.list",
     },
     SteamFix: {
@@ -55,7 +55,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/SteamFix.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/SteamFix.list`,
         path: "./ruleset/SteamFix.list",
     },
     GoogleFCM: {
@@ -63,7 +63,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/FirebaseCloudMessaging.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/FirebaseCloudMessaging.list`,
         path: "./ruleset/FirebaseCloudMessaging.list",
     },
     AdditionalFilter: {
@@ -71,7 +71,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/AdditionalFilter.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/AdditionalFilter.list`,
         path: "./ruleset/AdditionalFilter.list",
     },
     AdditionalCDNResources: {
@@ -79,7 +79,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/AdditionalCDNResources.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/AdditionalCDNResources.list`,
         path: "./ruleset/AdditionalCDNResources.list",
     },
     Crypto: {
@@ -87,7 +87,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/Crypto.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/Crypto.list`,
         path: "./ruleset/Crypto.list",
     },
     Weibo: {
@@ -95,7 +95,7 @@ export const ruleProviders: Record<string, RuleProvider> = {
         behavior: "classical",
         format: "text",
         interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/Weibo.list`,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/Weibo.list`,
         path: "./ruleset/Weibo.list",
     },
     GFWList: {

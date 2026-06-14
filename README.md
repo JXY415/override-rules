@@ -13,22 +13,6 @@
 
 > 本项目为本人自用，欢迎交流建议（Issue/PR）。如无特殊反馈，将优先满足个人需求与体验优化。
 
-[点击访问 Forgejo 上的镜像](https://git.l3zc.com/powerfullz/override-rules)
-
-### AFF
-
-#### FlowerCloud
-
-[注册链接](https://api-flowercloud.com/aff.php?aff=4352)
-
-目前我的主力机场，也是一家老牌一线机场了，线路扎实，冗余足够，实验性节点0.2倍率，部分地区的高级节点是家宽落地，用起来还是很舒服的。
-
-#### 星岛梦
-
-[注册链接](https://luics.xdmvipaff.cc/#/?code=MMB4xSlc)
-
-星岛梦是一家 2025 年 12 月刚开业的机场，机场主在测试的时候就来找我了，我因此有幸从早期测试阶段便开始关注，见证了机场主熬夜修线路换落地的过程，目前体验还不错。算上日常折扣性价比还可以，大家可以月付体验一下。
-
 ### 使用方法
 
 **Clash Party/Sparkle**

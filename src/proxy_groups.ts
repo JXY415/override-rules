@@ -1,5 +1,7 @@
 import {
     CDN_URL,
+    REPO_REF,
+    REPO_SLUG,
     LANDING_NODE_MATCHER,
     LOW_COST_NODE_MATCHER,
     NODE_SUFFIX,
@@ -191,7 +193,7 @@ export function buildProxyGroups({
         },
         {
             name: PROXY_GROUPS.MICROSOFT,
-            icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/Microsoft_Copilot.png`,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Microsoft_Copilot.png`,
             type: "select",
             proxies: defaultProxies,
         },
@@ -253,7 +255,7 @@ export function buildProxyGroups({
         },
         {
             name: PROXY_GROUPS.TELEGRAM,
-            icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/Telegram.png`,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Telegram.png`,
             type: "select",
             proxies: defaultProxies,
         },
@@ -272,7 +274,7 @@ export function buildProxyGroups({
         },
         {
             name: PROXY_GROUPS.TRUTH_SOCIAL,
-            icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/Truth_Social.png`,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Truth_Social.png`,
             type: "select",
             proxies: hasUS
                 ? ["美国节点", PROXY_GROUPS.SELECT, PROXY_GROUPS.MANUAL]
@@ -280,19 +282,19 @@ export function buildProxyGroups({
         },
         {
             name: PROXY_GROUPS.EHENTAI,
-            icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/Ehentai.png`,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Ehentai.png`,
             type: "select",
             proxies: defaultProxies,
         },
         {
             name: PROXY_GROUPS.PIKPAK,
-            icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/PikPak.png`,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/PikPak.png`,
             type: "select",
             proxies: defaultProxies,
         },
         {
             name: PROXY_GROUPS.SOGOU_INPUT,
-            icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/Sougou.png`,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Sougou.png`,
             type: "select",
             proxies: ["DIRECT", "REJECT"],
         },

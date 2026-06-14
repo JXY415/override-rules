@@ -1,5 +1,10 @@
 # 如何自定义专属覆写规则
 
+> **本 Fork 与上游的差异提示**（基于 `powerfullz/override-rules`）：
+> 1. **发布 Tag 格式**：触发 `Release Artifacts` 工作流需用 `src-vX.Y.Z` 前缀（上游 README 推荐的 `npm version patch` 会打裸 `vX.Y.Z`，触发不了）。
+> 2. **资源引用**：`src/constants.ts` 中已新增 `REPO_SLUG` / `REPO_REF` 两个常量，所有规则集与图标 URL 统一指向本仓库；更换仓库或锁定版本只需改这两行。
+> 3. **日常调试**：每次推送 `src/**` 改动，`preview.yaml` 会自动构建到 `preview` 分支，无需打 Tag 即可获取最新产物。
+
 本项目的设计初衷是提供一套高度灵活且开箱即用的 Mihomo/Substore 覆写规则。如果默认的代理组、分流规则或参数设定不满足你的需求，你可以轻松 Fork 本仓库并进行定制。
 
 ## Fork 并准备开发环境
@@ -145,27 +150,41 @@ npm run lint:fix
 npm run artifacts
 ```
 
-**重要**：本项目已经配置了 GitHub Actions 来自动处理构建和发布，所有的产物（包括 `.js` 脚本和 `.yaml` 配置文件）会被自动构建并部署到 `dist` 分支。因此，**请勿直接将本地生成的产物推送到主分支**。
+**重要**：本项目已经配置了 GitHub Actions 来自动处理构建和发布，所有的产物（包括 `.js` 脚本和 `.yaml` 配置文件）会被自动构建并部署到 `dist`（正式发布）或 `preview`（每次推送 `src/**` 改动）分支。因此，**请勿直接将本地生成的产物推送到主分支**。
 
 请按照以下步骤发布并使用你的定制版本：
 
 1. **启用 GitHub Actions**：由于你使用的是 Fork 后的仓库，请前往你仓库的 **Actions** 标签页，点击 "I understand my workflows, go ahead and enable them" 以启用自动化工作流。
-2. **提交代码**：将你修改后的源码（如 `src/` 下的内容）提交并推送到你的 GitHub 仓库。
-3. **触发发布**：通过创建并推送 Tag 来触发自动构建和发布。推荐使用以下命令自动增加版本号并推送 Tag：
+2. **提交并推送源码**：将你修改后的源码（如 `src/` 下的内容）提交并推送到 `main` 分支。
+   - 推送后，`preview.yaml` 工作流会**自动触发**，把当次构建产物推送到 `preview` 分支，无需手动操作。这是日常调试和验证的最佳途径。
+3. **触发正式发布（可选）**：日常使用 `preview` 分支即可；若希望锁定一个稳定版本到 `dist` 分支，需要创建并推送 **`src-v*` 前缀**的 Tag：
    ```bash
-   npm version patch
+   # 注意前缀必须是 src-，工作流内部会自动剥除该前缀（src-v2.4.4 → v2.4.4）
+   git tag src-v2.4.4
+   git push origin src-v2.4.4
    ```
-   > **注意**：由于 `package.json` 中配置了相关的生命周期钩子，上述命令会自动运行代码测试、更新版本号、生成更新日志（CHANGELOG），并将带有标签的提交推送至远程仓库以触发 CI 工作流。
-4. **等待自动构建**：回到 GitHub 仓库的 Actions 页面，等待名为 "Release Artifacts" 的工作流执行完毕。该工作流会自动将编译压缩后的最终产物推送到 `dist` 分支。
-5. **获取并使用定制脚本**：构建成功后，你可以通过 jsDelivr 引用指向 `dist` 分支的覆写脚本。例如，在 Substore 中配置如下链接（注意将“你的用户名”替换为实际的 GitHub 用户名）。
+   > **注意 Tag 前缀**：触发 `Release Artifacts` 工作流的 Tag 格式为 `src-vX.Y.Z`，**不要**使用裸 `vX.Y.Z`（后者无法触发该工作流）。如需通过 `npm version` 自动管理版本号，请在打 Tag 后手动补一个 `src-` 前缀的同名 Tag。
+4. **等待自动构建**：回到 GitHub 仓库的 Actions 页面，等待对应工作流执行完毕。
+   - `Deploy Preview` 工作流会把产物推送到 `preview` 分支。
+   - `Release Artifacts` 工作流会把产物推送到 `dist` 分支，并创建对应 `vX.Y.Z` 的 Release。
+5. **获取并使用定制脚本**：构建成功后，通过 jsDelivr 引用对应分支的覆写脚本（注意将“你的用户名”替换为实际的 GitHub 用户名）。
+
+日常跟随最新改动（推荐使用 `preview` 分支）：
+
+```text
+https://cdn.jsdelivr.net/gh/你的用户名/override-rules@preview/convert.min.js
+```
+
+稳定版本（`dist` 分支，跟随最近一次 `src-v*` 发布）：
 
 ```text
 https://cdn.jsdelivr.net/gh/你的用户名/override-rules@dist/convert.min.js
 ```
 
-若不能接受 JSDelivr 的缓存和更新延迟，则直接使用 Github Raw 链接：
+若不能接受 jsDelivr 的缓存和更新延迟，则直接使用 Github Raw 链接：
 
 ```text
+https://raw.githubusercontent.com/你的用户名/override-rules/refs/heads/preview/convert.min.js
 https://raw.githubusercontent.com/你的用户名/override-rules/refs/heads/dist/convert.min.js
 ```
 

@@ -3,6 +3,16 @@ import { createCaseInsensitiveNodeMatcher } from "./utils";
 
 export const NODE_SUFFIX = "节点";
 export const CDN_URL = "https://cdn.jsdelivr.net";
+/**
+ * 本仓库在 GitHub 上的标识（owner/repo），用于拼装规则集与图标的 jsDelivr CDN 链接。
+ * Fork 后请改为自己的仓库标识，使产物引用本仓库的 `ruleset/` 与 `icons/` 资源。
+ */
+export const REPO_SLUG = "JXY415/override-rules";
+/**
+ * 引用本仓库资源时使用的分支或 tag（用于 jsDelivr URL 的 `@<ref>` 段）。
+ * 保持 `master` 即默认跟随主分支；如需版本锁定，可改为具体 tag（如 `v2.4.4`）。
+ */
+export const REPO_REF = "master";
 
 export const PROXY_GROUPS = {
     SELECT: "选择代理",

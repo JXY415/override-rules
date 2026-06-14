@@ -1,6 +1,6 @@
 /*!
-powerfullz 的 Substore 订阅转换脚本
-https://github.com/powerfullz/override-rules
+Substore 订阅转换脚本（基于 powerfullz/override-rules 修改）
+https://github.com/JXY415/override-rules
 
 支持的传入参数：
 - grouptype: 地区代理组类型（0=select 手动选择, 1=url-test 自动测速, 2=load-balance 负载均衡，默认 0）
@@ -48,7 +48,7 @@ function getRawArgs(): ScriptArgs {
     try {
         return $arguments;
     } catch {
-        console.log("[powerfullz 的覆写脚本] 未检测到传入参数，使用默认参数。", {});
+        console.log("[override-rules 覆写脚本] 未检测到传入参数，使用默认参数。", {});
         return {};
     }
 }
