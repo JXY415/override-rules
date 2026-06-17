@@ -58,6 +58,14 @@ export const ruleProviders: Record<string, RuleProvider> = {
         url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/TikTok.list`,
         path: "./ruleset/TikTok.list",
     },
+    EHentai: {
+        type: "http",
+        behavior: "classical",
+        format: "text",
+        interval: 86400,
+        url: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/ruleset/EHentai.list`,
+        path: "./ruleset/EHentai.list",
+    },
     SteamFix: {
         type: "http",
         behavior: "classical",

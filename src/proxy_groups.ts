@@ -247,6 +247,12 @@ export function buildProxyGroups({
             type: "select",
             proxies: defaultProxies,
         },
+        {
+            name: PROXY_GROUPS.EHENTAI,
+            icon: `${CDN_URL}/gh/${REPO_SLUG}@${REPO_REF}/icons/Ehentai.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
 
         // ========================================
         // 💬 社交
