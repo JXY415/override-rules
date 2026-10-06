@@ -51,7 +51,7 @@
 
 > **向后兼容**：旧的 `loadbalance` 参数仍然可用。当 `grouptype` 未指定时，`loadbalance=true` 等价于 `grouptype=2`，`loadbalance=false` 等价于 `grouptype=1`。
 
-[^landing]: 注意在默认的枚举模式下，如果没有符合条件的落地节点（e.g 名称中带有「家宽」、「商宽」、「落地」等关键词的节点），内核会无法启动。
+[^landing]: 注意在默认的枚举模式下，如果没有符合条件的落地节点（e.g 名称中带有「家宽」、「落地」等关键词的节点），内核会无法启动。
 [^quic]: 默认屏蔽了 QUIC 流量防止节点 UDP 性能不佳影响上网体验，如果确信节点质量良好，建议设置为 true。
 [^regex]: 默认情况下覆写脚本会直接把节点都筛选好，如果想让内核来筛（比如，你在 Clash Party 客户端里额外添加了自建节点，想直接通过正则表达式筛选进入配置文件）那就打开吧。
 
@@ -97,11 +97,11 @@ https://raw.githubusercontent.com/JXY415/override-rules/refs/heads/preview/conve
 
 ### 关于链式代理的说明
 
-若有链式代理需求，直接在 JS 链接后加 `landing=true` 参数即可（例如：`convert.min.js#landing=true`）。这样会新增「落地节点」和「前置代理」两个代理组，其中「落地节点」会自动匹配名称包含「家宽」「家庭」「商宽」「落地」「Starlink/星链」等关键词的节点，其他诸如「香港节点」等国家/地区分组会自动剔除这些落地节点。需要被链式代理的落地节点请在你的订阅里为该节点配置 `dialer-proxy: "前置代理"`，示例：
+若有链式代理需求，直接在 JS 链接后加 `landing=true` 参数即可（例如：`convert.min.js#landing=true`）。这样会新增「落地节点」和「前置代理」两个代理组，其中「落地节点」会自动匹配名称包含「家宽」「家庭宽带」「落地」「Starlink/星链」等关键词的节点，其他诸如「香港节点」等国家/地区分组会自动剔除这些落地节点。「家宽节点」使用同一套匹配条件；仅带「商宽」或「商业宽带」标签的节点按地区正常归类。关闭 `landing` 后，「家宽节点」仍会匹配，家宽节点也会正常进入国家/地区分组。需要被链式代理的落地节点请在你的订阅里为该节点配置 `dialer-proxy: "前置代理"`，示例：
 
 ```yaml
 proxies:
-  - name: '香港 HGC NAT 商宽落地'
+  - name: '香港 HGC NAT 家宽落地'
     type: ss
     server: example.com
     port: 6666
