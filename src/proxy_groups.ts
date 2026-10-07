@@ -216,6 +216,12 @@ export function buildProxyGroups({
             proxies: defaultProxies,
         },
         {
+            name: PROXY_GROUPS.EMBY,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Emby.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
             name: PROXY_GROUPS.TIKTOK,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/TikTok.png`,
             type: "select",

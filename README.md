@@ -85,6 +85,8 @@ https://raw.githubusercontent.com/JXY415/override-rules/refs/heads/preview/conve
 
 ### 关于部分特殊代理组的说明
 
+**EMBY**：提供独立的 Emby 分流选择组，接入 [blackmatrix7 的 Emby 规则集](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Emby)，并额外匹配 `xueshan.liminalnet.com`。这些规则位于通用 CDN、GFW 和 GeoIP 分流之前；公共规则集无法覆盖所有自建服务器，其他服务器可在 `src/rules.ts` 中按域名补充。
+
 **静态资源**：包含所有常见静态资源 CDN 域名、对象存储域名。大部分网站的静态资源（如图片、视频、音频、字体、JS、CSS）都有独立域名、不设置风控措施、不设置鉴权，这些静态资源可以使用 IP 不一定干净（例如 IDC 类 IP）、但是带宽更大、延时更低、而且有和大部分主流 CDN（如 Cloudflare、Akamai、Fastly、EdgeCast）在 IXP 有互联的网络出口。一般就实践经验来看，在正常上网中这部分域名产生的流量占据约 70% 左右。如果你在使用商业性质的远端策略服务提供商、且该服务上提供了低倍率节点，你可以将这部分域名分流至低倍率节点以节省流量。[^fn1]
 
 [^fn1]: 来源：[我有特别的 Surge 配置和使用技巧](https://blog.skk.moe/post/i-have-my-unique-surge-setup/)

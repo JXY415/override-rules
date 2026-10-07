@@ -50,6 +50,14 @@ export const ruleProviders: Record<string, RuleProvider> = {
         url: `${CDN_URL}/gh/VPSDance/ai-proxy-rules@main/rules/clash/all.yaml`,
         path: "./ruleset/AICatchAll.yaml",
     },
+    Emby: {
+        type: "http",
+        behavior: "classical",
+        format: "yaml",
+        interval: 86400,
+        url: `${CDN_URL}/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Emby/Emby.yaml`,
+        path: "./ruleset/Emby.yaml",
+    },
     TikTok: {
         type: "http",
         behavior: "classical",

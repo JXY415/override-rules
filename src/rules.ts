@@ -9,6 +9,8 @@ const baseRules = [
     `RULE-SET,OpenAI,${PROXY_GROUPS.OPENAI}`,
     `RULE-SET,Claude,${PROXY_GROUPS.CLAUDE}`,
     `RULE-SET,AICatchAll,${PROXY_GROUPS.AI_SERVICE}`,
+    `DOMAIN,xueshan.liminalnet.com,${PROXY_GROUPS.EMBY}`,
+    `RULE-SET,Emby,${PROXY_GROUPS.EMBY}`,
     `GEOSITE,bilibili,${PROXY_GROUPS.BILIBILI}`,
     `GEOSITE,youtube,${PROXY_GROUPS.YOUTUBE}`,
     `GEOSITE,telegram,${PROXY_GROUPS.TELEGRAM}`,
